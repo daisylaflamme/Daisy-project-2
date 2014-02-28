@@ -53,9 +53,9 @@ function updateScrubBar(e) {
 	// A function to make the scrubBar follow the mouse
 
 	scrubBar.style.visibility = 'visible';
-	//scrubBar.style.left = e.clientX - position(hashtagPlot).x; // e.clientX is the mouse position
+	scrubBar.style.left = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
 
-	scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
+	//scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
 }
 
 function updateVideo(e) {
