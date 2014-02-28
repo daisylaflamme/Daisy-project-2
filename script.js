@@ -46,17 +46,19 @@ hashtagPlot.addEventListener('mouseout', playVideo, false);
 function playVideo(e) {
 	//scrubBar.style.visibility = "hidden";
 	SOTUvideo.play();
-	scrubBar.style.left = scrubBar.style.left + 1;
+	for (SOTUvideo.play()){
+	scrubBar.style.left = scrubBar.style.left - 1;
+	}
 }
 
 function updateScrubBar(e) {
 	// A function to make the scrubBar follow the mouse
 
 	scrubBar.style.visibility = 'visible';
-	scrubBar.style.left = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
+	scrubBar.style.left = parseInt(1280/hashtagPlot.offsetWidth);
+	
 
-	//scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
-}
+	
 
 function updateVideo(e) {
 	SOTUvideo.currentTime = SOTUvideo.duration * scrubBar.fractionScrubbed;
