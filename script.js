@@ -44,7 +44,7 @@ function hashtagMousemove(e) {
 
 hashtagPlot.addEventListener('mouseout', playVideo, false);
 function playVideo(e) {
-	scrubBar.style.visibility = "hidden";
+	//scrubBar.style.visibility = "hidden";
 	SOTUvideo.play();
 }
 
