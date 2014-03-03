@@ -51,7 +51,8 @@ function playVideo(e) {
 	//scrubBar.fractionScrubbed = hashtagPlot.offsetWidth/(SOTUvideo.duration/SOTUvideo.currentTime);
 	//scrubBar.style.left = hashtagPlot.offsetWidth - parseInt(SOTUvideo.currentTime, 100);	
 	//scrubBar.style.left = hashtagPlot.offsetWidth - scrollToTimestamp(timestamp);
-	scrubBar.fractionScrubbed = SOTUvideo.currentTime/SOTUvideo.duration;
+	//scrubBar.fractionScrubbed = SOTUvideo.currentTime/SOTUvideo.duration;
+	//scrubBar.style.left = hashtagPlot.offsetWidth - SOTUvideo.currentTime;
 		
 }
 
