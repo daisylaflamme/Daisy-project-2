@@ -46,7 +46,9 @@ hashtagPlot.addEventListener('mouseout', playVideo, false);
 function playVideo(e) {
 	//scrubBar.style.visibility = "hidden";
 	SOTUvideo.play();
-	scrubBar.style.left = nearestStamp(fractionScrubbed);
+	//scrubBar.style.left = nearestStamp(fractionScrubbed); -not working
+	//scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
+	scrubBar.fractionScrubbed = hashtagPlot.offsetWidth/(SOTUvideo.duration/SOTUvideo.currentTime);
 
 }
 
