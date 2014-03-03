@@ -46,10 +46,13 @@ hashtagPlot.addEventListener('mouseout', playVideo, false);
 function playVideo(e) {
 	//scrubBar.style.visibility = "hidden";
 	SOTUvideo.play();
-	//scrubBar.style.left = nearestStamp(fractionScrubbed); -not working
+	//scrubBar.style.left = nearestStamp(fractionScrubbed); 
 	//scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
-	scrubBar.fractionScrubbed = hashtagPlot.offsetWidth/(SOTUvideo.duration/SOTUvideo.currentTime);
-
+	//scrubBar.fractionScrubbed = hashtagPlot.offsetWidth/(SOTUvideo.duration/SOTUvideo.currentTime);
+	//scrubBar.style.left = hashtagPlot.offsetWidth - parseInt(SOTUvideo.currentTime, 100);	
+	//scrubBar.style.left = hashtagPlot.offsetWidth - scrollToTimestamp(timestamp);
+	scrubBar.fractionScrubbed = SOTUvideo.currentTime/SOTUvideo.duration;
+		
 }
 
 function updateScrubBar(e) {
@@ -59,6 +62,7 @@ function updateScrubBar(e) {
 	scrubBar.style.left = e.clientX - position(hashtagPlot).x; // e.clientX is the mouse position
 
 	scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
+
 }
 
 function updateVideo(e) {
