@@ -53,6 +53,20 @@ function playVideo(e) {
 	//scrubBar.style.left = hashtagPlot.offsetWidth - scrollToTimestamp(timestamp);
 	//scrubBar.fractionScrubbed = SOTUvideo.currentTime/SOTUvideo.duration;
 	//scrubBar.style.left = hashtagPlot.offsetWidth - SOTUvideo.currentTime;
+	
+	//var currenttime = SOTUvideo.currentTime;
+	//for(currenttime; currenttime++; currenttime < 1280){
+		//scrubBar.fractionScrubbed === currenttime;
+		//scrubBar.style.left = currenttime;
+	//}
+
+	if(SOTUvideo.play()){
+		scrubBar.fractionScrubbed === SOTUvideo.currentTime/SOTUvideo.duration;
+
+	}
+
+
+	
 		
 }
 
