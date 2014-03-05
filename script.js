@@ -49,21 +49,29 @@ function playVideo(e) {
 	//scrubBar.style.left = nearestStamp(fractionScrubbed); 
 	//scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
 	//scrubBar.fractionScrubbed = hashtagPlot.offsetWidth/(SOTUvideo.duration/SOTUvideo.currentTime);
-	//scrubBar.style.left = hashtagPlot.offsetWidth - parseInt(SOTUvideo.currentTime, 100);	
+	//scrubBar.style.left = hashtagPlot.offsetWidth - parseInt(SOTUvideo.currentTime, 10);	
 	//scrubBar.style.left = hashtagPlot.offsetWidth - scrollToTimestamp(timestamp);
 	//scrubBar.fractionScrubbed = SOTUvideo.currentTime/SOTUvideo.duration;
 	//scrubBar.style.left = hashtagPlot.offsetWidth - SOTUvideo.currentTime;
-	
+
+	for (var ff = hashtagPlot.offsetWidth*scrubBar.fractionScrubbed; ff<1200; ff+1){
+		scrubBar.style.left = hashtagPlot.offsetWidth - parseInt(ff, 10);	
+		console.log(ff);
+	}
+
+
 	//var currenttime = SOTUvideo.currentTime;
 	//for(currenttime; currenttime++; currenttime < 1280){
 		//scrubBar.fractionScrubbed === currenttime;
 		//scrubBar.style.left = currenttime;
 	//}
 
-	if(SOTUvideo.play()){
-		scrubBar.fractionScrubbed === SOTUvideo.currentTime/SOTUvideo.duration;
-
-	}
+	//if(SOTUvideo.play()){
+		//scrubBar.fractionScrubbed = SOTUvideo.currentTime/SOTUvideo.duration;
+	//	var fr = scrubBar.fractionScrubbed*hashtagPlot.offsetWidth;
+		//scrubBar.style.left = parseInt(fr, 10) + "px";
+		//scrubBar.style.left = hashtagPlot.offsetWidth-100;
+	//}
 
 
 	
