@@ -90,12 +90,21 @@ function playVideo(e) {
 	//for(var n = parseInt(scrubBar.style.left,10); n < 1280; n++){
 		//scrubBar.style.left = parseInt(scrubBar.style.left,10) -1 + "px";
 	//}
-	do {
-   scrubBar.style.left = parseInt(scrubBar.style.left,10) + 1 + "px";
+	//do {
+   //scrubBar.style.left = parseInt(scrubBar.style.left,10) + 1;
    //document.write(scrubBar.style.left);
-	} while (SOTUvideo.currentTime < 3900);
-
+	//} while (parseInt(SOTUvideo.currentTime, 10) < 3900);
+	updateVideo(e);
+	slideScrubBar(slideScrubBar(e));
 		
+}
+
+function slideScrubBar(e) {
+	// A function to make the scrubBar slide to right when video is playing
+
+	scrubBar.style.left = parseInt(hashtagPlot.offsetWidth*scrubBar.fractionScrubbed, 10) + "px"; 
+
+	//scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
 }
 
 function updateScrubBar(e) {
@@ -105,6 +114,7 @@ function updateScrubBar(e) {
 	scrubBar.style.left = e.clientX - position(hashtagPlot).x; // e.clientX is the mouse position
 
 	scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
+
 
 }
 
