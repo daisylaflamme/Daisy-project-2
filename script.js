@@ -72,9 +72,9 @@ function playVideo(e) {
 		//scrubBar.style.left = parseInt(fr, 10) + "px";
 		//scrubBar.style.left = hashtagPlot.offsetWidth-100;
 	//}
-
+	
 	for (var i=0; i<3917; i++){
-		scrubBar.style.left = scrubBar.style.left + 100;
+		scrubBar.style.left =  scrubBar.style.left + 100;
 	}
 
 	
