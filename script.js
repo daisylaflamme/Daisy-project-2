@@ -78,11 +78,23 @@ function playVideo(e) {
 	//scrubBar.style.left=100;
 	//}
 	
-	if(SOTUvideo.play()){
-		var moveScrubBarRight =  hashtagPlot.offsetWidth * (SOTUvideo.currentTime/SOTUvideo.duration);
-		scrubBar.style.left = parseInt(moveScrubBarRight, 10);
-	}
-	
+	//if(SOTUvideo.play()){
+		//var moveScrubBarRight =  hashtagPlot.offsetWidth * (SOTUvideo.currentTime/SOTUvideo.duration);
+		//scrubBar.style.left = parseInt(moveScrubBarRight, 10);
+		//console.log(scrubBar.style.left);
+		//console.log(hashtagPlot.offsetWidth);
+		//console.log(SOTUvideo.currentTime);
+		//console.log(parseInt(scrubBar.style.left,10));
+		//scrubBar.style.left++;
+	//}
+	//for(var n = parseInt(scrubBar.style.left,10); n < 1280; n++){
+		//scrubBar.style.left = parseInt(scrubBar.style.left,10) -1 + "px";
+	//}
+	do {
+   scrubBar.style.left = parseInt(scrubBar.style.left,10) + 1 + "px";
+   //document.write(scrubBar.style.left);
+	} while (SOTUvideo.currentTime < 3900);
+
 		
 }
 
