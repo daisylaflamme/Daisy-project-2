@@ -94,18 +94,15 @@ function playVideo(e) {
    //scrubBar.style.left = parseInt(scrubBar.style.left,10) + 1;
    //document.write(scrubBar.style.left);
 	//} while (parseInt(SOTUvideo.currentTime, 10) < 3900);
-	updateVideo(e);
-	slideScrubBar(slideScrubBar(e));
+	//updateVideo(e);
+	//slideScrubBar(slideScrubBar(e));
 		
 }
 
-function slideScrubBar(e) {
+//function slideScrubBar(e) {
 	// A function to make the scrubBar slide to right when video is playing
-
-	scrubBar.style.left = parseInt(hashtagPlot.offsetWidth*scrubBar.fractionScrubbed, 10) + "px"; 
-
-	//scrubBar.fractionScrubbed = parseInt(scrubBar.style.left, 10)/hashtagPlot.offsetWidth;
-}
+	//scrubBar.style.left = parseInt(hashtagPlot.offsetWidth*scrubBar.fractionScrubbed, 10) + "px"; 
+//}
 
 function updateScrubBar(e) {
 	// A function to make the scrubBar follow the mouse
