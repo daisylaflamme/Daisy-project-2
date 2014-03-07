@@ -40,6 +40,7 @@ function hashtagMousemove(e) {
 	updateScrubBar(e);
 	updateVideo(e);
 	updateTranscript(e);
+	webkitCancelAnimationFrame(animationFrame);
 }
 
 hashtagPlot.addEventListener('mouseout', playVideo, false);
@@ -96,13 +97,19 @@ function playVideo(e) {
 	//} while (parseInt(SOTUvideo.currentTime, 10) < 3900);
 	//updateVideo(e);
 	//slideScrubBar(slideScrubBar(e));
+	slideScrubBar();
 		
 }
 
-//function slideScrubBar(e) {
+function slideScrubBar() {
 	// A function to make the scrubBar slide to right when video is playing
-	//scrubBar.style.left = parseInt(hashtagPlot.offsetWidth*scrubBar.fractionScrubbed, 10) + "px"; 
-//}
+	var animationFrame = webkitRequestAnimationFrame(slideScrubBar);
+	var moveScrubBarRight =  hashtagPlot.offsetWidth * (SOTUvideo.currentTime/SOTUvideo.duration);
+	scrubBar.style.left = parseInt(moveScrubBarRight, 10);
+	console.log(scrubBar.style.left);
+	console.log(parseInt(scrubBar.style.left,10));
+
+}
 
 function updateScrubBar(e) {
 	// A function to make the scrubBar follow the mouse

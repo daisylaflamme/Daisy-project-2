@@ -166,3 +166,6 @@ li a {
 	-webkit-transition: 250ms linear;
 	transition: 250ms linear;
 }
+.move-right {
+	transform:translateX(300px);
+}
