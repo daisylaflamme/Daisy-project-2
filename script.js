@@ -119,14 +119,23 @@ function slideScrubBar() {
 
 function slideTranscript(){
 	var animationFrame = webkitRequestAnimationFrame(slideTranscript);
+
 	var CurrentVideoTimeNumber = parseInt(SOTUvideo.currentTime, 10);
-	for(var i = 0; i < timestamps.length; i++){
+	var timestamps = [];
+	var stampedDivs = transcript.querySelectorAll('div');
+	for (var i = 0; i < stampedDivs.length; i++) {
+		timestamps[i] = parseInt(stampedDivs[i].id.split('-')[2], 10);
+	//}
+	//for(var i = 0; i < timestamps.length; i++){
 		
-		if(timestamps[i] > CurrentVideoTimeNumber && timestamps[i-1] < CurrentVideoTimeNumber){
-			timestamps[i] == CurrentVideoTimeNumber;
+		if(timestamps[i] >= CurrentVideoTimeNumber && timestamps[i-1] <= CurrentVideoTimeNumber){
+			//timestamps[i] == CurrentVideoTimeNumber;
+		//if((CurrentVideoTimeNumber - timestamps[i]) >= 0 && (CurrentVideoTimeNumber - timestamps[i-1]) <= 0){
+			//timestamps[i] == CurrentVideoTimeNumber;
 		// console.log(timestamps[n]);
 			//var currentStamp = timestamps[n];
 			transcript.scrollTop = document.getElementById('transcript-time-' + timestamps[i]).offsetTop;
+			document.getElementById('transcript-time-' + timestamps[i]).style.backgroundColor = 'rgb(255,0,0)';
 		}
 	}
 }
