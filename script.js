@@ -129,11 +129,11 @@ function updateVideo(e) {
 transcript.addEventListener('click', hashtagClick, false);
 function hashtagClick(e) {
 	
-	var clickedDiv = document.getElementById('transcript-time-4212'); 
+	var clickedDiv = document.getElementById('transcript-time-3384'); 
 	//var stampedDivs = transcript.querySelectorAll('div');
 	console.log(clickedDiv.id); // Always true
 	console.log(clickedDiv.id.split("-")[2]);
-  
+  SOTUvideo.currentTime = parseInt(clickedDiv.id.split("-")[2], 10);
 	//console.log(this.clickedDiv);
 	slideScrubBar();
 	SOTUvideo.play();
