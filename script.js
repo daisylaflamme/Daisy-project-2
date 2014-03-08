@@ -126,21 +126,46 @@ function updateVideo(e) {
 ////////////////////////////////////////////////////////////////////////////////
 // Handling the scrolling transcript
 
-transcript.addEventListener('click', hashtagClick, false);
+function reply_click(e) {
+    e = e || window.event;
+    e = e.target || e.srcElement;
+    if (e.nodeName === 'P') {
+      //alert(e.parentNode.id);
+      var clickedDivId = e.parentNode;
+      //alert(clickedDivId.id.split("-")[2]);
+      SOTUvideo.currentTime = clickedDivId.id.split("-")[2] - 306;
+      slideScrubBar();
+			SOTUvideo.play();
+    }
+}
+
+/*transcript.addEventListener('click', hashtagClick, false);
 function hashtagClick(e) {
+
 	
-	var clickedDiv = document.getElementById('transcript-time-3384'); 
+	
+	var clickedDiv = document.getElementsByTagName('div'); 
 	//var stampedDivs = transcript.querySelectorAll('div');
 	console.log(clickedDiv.id); // Always true
 	console.log(clickedDiv.id.split("-")[2]);
-  SOTUvideo.currentTime = parseInt(clickedDiv.id.split("-")[2], 10);
+  
 	//console.log(this.clickedDiv);
-	slideScrubBar();
-	SOTUvideo.play();
+	var timestamps = [];
+	var stampedDivs = transcript.querySelectorAll('div');
+	for (var i = 0; i < stampedDivs.length; i++) {
+		timestamps[i] = parseInt(stampedDivs[i].id.split('-')[2], 10);
+		if (parseInt(clickedDiv.id.split("-")[2], 10) == timestamps[i]){
+			SOTUvideo.currentTime = parseInt(clickedDiv.id.split("-")[2], 10);
+			slideScrubBar();
+			SOTUvideo.play();
+		}
+	}
+	
+	
 	//updateTranscript(e);
 	//webkitCancelAnimationFrame(animationFrame);
 }
-
+*/
 
 function updateTranscript(e) {
 	scrollToTimestamp(nearestStamp(scrubBar.fractionScrubbed));
