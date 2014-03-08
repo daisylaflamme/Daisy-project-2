@@ -132,6 +132,7 @@ function hashtagClick(e) {
 	var clickedDiv = document.getElementById('transcript-time-4212'); 
 	//var stampedDivs = transcript.querySelectorAll('div');
 	console.log(clickedDiv.id); // Always true
+	console.log(clickedDiv.id.split("-")[2]);
   
 	//console.log(this.clickedDiv);
 	slideScrubBar();
