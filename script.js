@@ -125,15 +125,13 @@ function updateVideo(e) {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Handling the scrolling transcript
-var stampedDivs = transcript.querySelectorAll('div');
-stampedDivs[i].addEventListener('click', hashtagClick, false);
-//transcript.addEventListener('click', hashtagClick, false);
+
+transcript.addEventListener('click', hashtagClick, false);
 function hashtagClick(e) {
-	//var clickedDiv = document.getElementsByTagName('div'); 
 	
-	console.log(this); // Always true
-	
-	//console.log(this); 
+	var clickedDiv = document.getElementById('transcript-time-4212'); 
+	//var stampedDivs = transcript.querySelectorAll('div');
+	console.log(clickedDiv.id); // Always true
   
 	//console.log(this.clickedDiv);
 	slideScrubBar();
