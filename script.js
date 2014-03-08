@@ -95,7 +95,7 @@ function playVideo(e) {
 	//} while (parseInt(SOTUvideo.currentTime, 10) < 3900);
 	//updateVideo(e);
 	//slideScrubBar(slideScrubBar(e));
-	slideScrubBar();		
+	// slideScrubBar();		
 }
 
 function slideScrubBar() {
@@ -105,17 +105,24 @@ function slideScrubBar() {
 	scrubBar.style.left = parseInt(moveScrubBarRight, 10);
 	//console.log(scrubBar.style.left);
 	//console.log(parseInt(scrubBar.style.left,10));
-	for(var n = 0; n < 3917; n++){
-		timestamps[n] = parseInt(SOTUvideo.currentTime, 10);
-		console.log(timestamps[n]);
-		if (timestamps[n] == timestamps[i]){
-			
+	for(var n = 0; n < timestamps.length; n++){
+		if(timestamps[n] > parseInt(SOTUvideo.currentTime, 10) || timestamps[n-1] < parseInt(SOTUvideo.currentTime, 10)){
+		// console.log(timestamps[n]);
+			var currentStamp = timestamps[n];
+			document.getElementById('transcript-time-' + timestamps[n]).offsetTop;
+
 		}
 		
 	}
 	if (SOTUvideo.currentTime == 3917){
 		webkitCancelAnimationFrame(animationFrame);
 	}
+	//examples:
+	//transcript.scrollTop = document.getElementById('transcript-time-' + timestamps[10]).offsetTop
+	//document.getElementById('transcript-time-' + timestamps[10]).offsetTop
+	//transcript.scrollTop = document.getElementById('transcript-time-' + timestamps[10]).offsetTop
+
+
 
 }
 
@@ -145,7 +152,7 @@ function clickTranscript(e) {
       var clickedDivId = e.parentNode;
       //alert(clickedDivId.id.split("-")[2]);
       SOTUvideo.currentTime = clickedDivId.id.split("-")[2] - 306;
-      slideScrubBar();
+      // slideScrubBar();
 			SOTUvideo.play();
     }
 }
@@ -179,7 +186,7 @@ function updateTranscript(e) {
 
 function scrollToTimestamp(timestamp) {
 	var target = transcript.querySelector('#transcript-time-' + timestamp);
-	document.getElementById('sotu-transcript').scrollTop = target.offsetTop;
+	// document.getElementById('sotu-transcript').scrollTop = target.offsetTop;
 }
 
 function nearestStamp(fractionScrubbed) {
