@@ -105,13 +105,6 @@ function slideScrubBar() {
 	scrubBar.style.left = parseInt(moveScrubBarRight, 10);
 	//console.log(scrubBar.style.left);
 	//console.log(parseInt(scrubBar.style.left,10));
-	for(var n = 0; n < timestamps.length; n++){
-		if(timestamps[n] > parseInt(SOTUvideo.currentTime, 10) || timestamps[n-1] < parseInt(SOTUvideo.currentTime, 10)){
-		// console.log(timestamps[n]);
-			var currentStamp = timestamps[n];
-			document.getElementById('transcript-time-' + timestamps[n]).offsetTop;
-
-		}
 		
 	}
 	if (SOTUvideo.currentTime == 3917){
@@ -121,9 +114,18 @@ function slideScrubBar() {
 	//transcript.scrollTop = document.getElementById('transcript-time-' + timestamps[10]).offsetTop
 	//document.getElementById('transcript-time-' + timestamps[10]).offsetTop
 	//transcript.scrollTop = document.getElementById('transcript-time-' + timestamps[10]).offsetTop
+}
 
-
-
+function slideTranscript(SOTUvideo.currentTime)){
+	var animationFrame = webkitRequestAnimationFrame(slideTranscript);
+	var CurrentVideoTimeNumber = parseInt(SOTUvideo.currentTime, 10);
+	for(var i = 0; i < timestamps.length; i++){
+		
+		if(timestamps[i] > CurrentVideoTimeNumber && timestamps[i-1] < CurrentVideoTimeNumber){
+		// console.log(timestamps[n]);
+			//var currentStamp = timestamps[n];
+			document.getElementById('transcript-time-' + timestamps[i]).offsetTop;
+		}
 }
 
 function updateScrubBar(e) {
