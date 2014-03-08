@@ -60,7 +60,6 @@ function playVideo(e) {
 		//console.log(ff);
 	//}
 
-
 	//var currenttime = SOTUvideo.currentTime;
 	//for(currenttime; currenttime++; currenttime < 1280){
 		//scrubBar.fractionScrubbed === currenttime;
@@ -72,8 +71,7 @@ function playVideo(e) {
 	//	var fr = scrubBar.fractionScrubbed*hashtagPlot.offsetWidth;
 		//scrubBar.style.left = parseInt(fr, 10) + "px";
 		//scrubBar.style.left = hashtagPlot.offsetWidth-100;
-	//}
-	
+	//}	
 	
 	//for (scrubBar.style.left =  hashtagPlot.offsetWidth * (SOTUvideo.currentTime/SOTUvideo.duration)){
 	//scrubBar.style.left=100;
@@ -97,8 +95,7 @@ function playVideo(e) {
 	//} while (parseInt(SOTUvideo.currentTime, 10) < 3900);
 	//updateVideo(e);
 	//slideScrubBar(slideScrubBar(e));
-	slideScrubBar();
-		
+	slideScrubBar();		
 }
 
 function slideScrubBar() {
@@ -106,8 +103,8 @@ function slideScrubBar() {
 	var animationFrame = webkitRequestAnimationFrame(slideScrubBar);
 	var moveScrubBarRight =  hashtagPlot.offsetWidth * (SOTUvideo.currentTime/SOTUvideo.duration);
 	scrubBar.style.left = parseInt(moveScrubBarRight, 10);
-	console.log(scrubBar.style.left);
-	console.log(parseInt(scrubBar.style.left,10));
+	//console.log(scrubBar.style.left);
+	//console.log(parseInt(scrubBar.style.left,10));
 
 }
 
@@ -128,6 +125,23 @@ function updateVideo(e) {
 
 ////////////////////////////////////////////////////////////////////////////////
 // Handling the scrolling transcript
+var stampedDivs = transcript.querySelectorAll('div');
+stampedDivs[i].addEventListener('click', hashtagClick, false);
+//transcript.addEventListener('click', hashtagClick, false);
+function hashtagClick(e) {
+	//var clickedDiv = document.getElementsByTagName('div'); 
+	
+	console.log(this); // Always true
+	
+	//console.log(this); 
+  
+	//console.log(this.clickedDiv);
+	slideScrubBar();
+	SOTUvideo.play();
+	//updateTranscript(e);
+	//webkitCancelAnimationFrame(animationFrame);
+}
+
 
 function updateTranscript(e) {
 	scrollToTimestamp(nearestStamp(scrubBar.fractionScrubbed));
