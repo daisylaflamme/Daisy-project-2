@@ -105,6 +105,17 @@ function slideScrubBar() {
 	scrubBar.style.left = parseInt(moveScrubBarRight, 10);
 	//console.log(scrubBar.style.left);
 	//console.log(parseInt(scrubBar.style.left,10));
+	for(var n = 0; n < 3917; n++){
+		timestamps[n] = parseInt(SOTUvideo.currentTime, 10);
+		console.log(timestamps[n]);
+		if (timestamps[n] == timestamps[i]){
+			
+		}
+		
+	}
+	if (SOTUvideo.currentTime == 3917){
+		webkitCancelAnimationFrame(animationFrame);
+	}
 
 }
 
@@ -126,7 +137,7 @@ function updateVideo(e) {
 ////////////////////////////////////////////////////////////////////////////////
 // Handling the scrolling transcript
 
-function reply_click(e) {
+function clickTranscript(e) {
     e = e || window.event;
     e = e.target || e.srcElement;
     if (e.nodeName === 'P') {
@@ -140,10 +151,7 @@ function reply_click(e) {
 }
 
 /*transcript.addEventListener('click', hashtagClick, false);
-function hashtagClick(e) {
-
-	
-	
+function hashtagClick(e) {	
 	var clickedDiv = document.getElementsByTagName('div'); 
 	//var stampedDivs = transcript.querySelectorAll('div');
 	console.log(clickedDiv.id); // Always true
@@ -159,9 +167,7 @@ function hashtagClick(e) {
 			slideScrubBar();
 			SOTUvideo.play();
 		}
-	}
-	
-	
+	}	
 	//updateTranscript(e);
 	//webkitCancelAnimationFrame(animationFrame);
 }
