@@ -19,7 +19,7 @@ function extractTimestamps() {
 // Initialize these for loading later, after window.onload
 var nation = null;
 var statePaths = null;
-var stateAbbreviations = null;
+var stateAbbreviations = [];
 
 // Hardcoded colors for each hashtag, grabbed from the twitter site with https://en.wikipedia.org/wiki/DigitalColor_Meter
 var hashtagColors = {
@@ -206,9 +206,9 @@ function scrollToTimestamp(timestamp) {
 function nearestStamp(fractionScrubbed) {
 	// Figure out what the closest timestamp we have is to the current amount of scrubbing
 	var timestampEquivalent = fractionScrubbed * SOTUvideo.duration + videoOffset; // IF we had a timestamp, what would it be?
-	for (var i = 0; i < timestamps.length - 1; i++) {
-		if ( timestamps[i+1] > timestampEquivalent ) { // Find teh first timestamp our guess is greater than
-			return timestamps[i];
+	for (var i = 1; i < timestamps.length - 1; i++) {
+ 		if ( timestamps[i] > timestampEquivalent ) { // Find the first timestamp our guess is greater than
+ 			return timestamps[i-1];
 		}
 	}
 	return timestamps[timestamps.length - 1];
@@ -241,7 +241,7 @@ window.onload = function () {
 	statePaths = nation.querySelectorAll('.state');
 	
 	// Go through and get all the state abbreviations used
-	stateAbbreviations = [];
+	//stateAbbreviations = [];
 	for (var i = 0; i < statePaths.length; i++ ) {
 		if (statePaths[i].id.length == 2) {
 			stateAbbreviations.push(statePaths[i].id);

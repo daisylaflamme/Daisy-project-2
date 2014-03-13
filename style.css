@@ -101,7 +101,7 @@ li a {
 	font-family: 'Crimson Text', serif;
 
 	overflow-y: auto;
-
+	position: relative;
 	height: 340px;
 	padding-left: 1em;
 	padding-right: 1em;
