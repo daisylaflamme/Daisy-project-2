@@ -1,15 +1,17 @@
 <html>
 
 	<head>
+		<script src='https://github.com/downloads/processing-js/processing-js/processing-1.4.1.js'></script>
 		<link rel='stylesheet' type='text/css' href='./style.css'>
 		<link href='http://fonts.googleapis.com/css?family=Crimson+Text' rel='stylesheet' type='text/css'>
 	</head>
 
 	<body>
-		<div id='hashtag-plot'>
-			<div id='scrub-bar'></div>
-		</div>
-
+	
+			<div id='hashtag-plot'>			
+				<div id='scrub-bar'></div>			
+			</div>
+		
 		<div id='container'>
 			<div class='panel' id='left'>
 				<video id='sotu-video' src='./media/sotu.mp4' controls></video>
@@ -510,15 +512,37 @@
 		<script src='./script.js'></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
-		<!--<script>
-			//$(document).ready(function(){
-			//	$("#scrub-bar").mouseout(function(){
-				//  $("#scrub-bar").addClass("move-right");
-				 // },function(){
-				  //$("#scrub-bar").hide();
-				//});
-		  //});
-		//</script>-->
+		<script>
+			var canvas = document.getElementsByTagName('div')[0];
+			var width = 1280;
+			var ed;
+			var data = tweetValues;
+			//var tweetIntervals = Object.keys(tweetValues);
+
+			for(var prop in data){//prop is each tweetInterval
+				var state_obj = data[prop];//each state:value object
+				for(var state_prop in state_obj){//state_prop is each  state property in the state object
+					var state_value = state_obj[state_prop]//and this is the state property's values which are an arrays of 2 values(string and float)
+					for(var i=0; i<state_value.length-1; i++){
+						//var array_two_values = state_value[i]
+						if(state_value[0]=="#education"){
+							ed = state_value[1][1];//this is the float numeric value of the nested state array
+				//for (var i = 0; i < tweetIntervals.length; i++){
+					//for(var k=1; k<tweetIntervals.length; k++){
+						//if(tweetValues[i][k] == "#education"){
+							//ed = tweetValues[i][k+1];
+							console.log(ed);
+						//}
+					//}
+				//}
+						}
+					}
+				}
+			}
+			
+			
+
+		</script>
 
 	</body>
 
