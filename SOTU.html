@@ -515,33 +515,48 @@
 		<script>
 			var canvas = document.getElementsByTagName('div')[0];
 			var width = 1280;
-			var ed;
-			var data = tweetValues;
-			//var tweetIntervals = Object.keys(tweetValues);
+			var tweetIntervals = Object.keys(tweetValues);
 
-			for(var prop in data){//prop is each tweetInterval
-				var state_obj = data[prop];//each state:value object
-				for(var state_prop in state_obj){//state_prop is each  state property in the state object
-					var state_value = state_obj[state_prop]//and this is the state property's values which are an arrays of 2 values(string and float)
-					for(var i=0; i<state_value.length-1; i++){
-						//var array_two_values = state_value[i]
-						if(state_value[0][0]=="#education"){
-							ed = state_value[1][1];//this is the float numeric value of the nested state array
-				//for (var i = 0; i < tweetIntervals.length; i++){
-					//for(var k=1; k<tweetIntervals.length; k++){
-						//if(tweetValues[i][k] == "#education"){
-							//ed = tweetValues[i][k+1];
-							console.log(ed);
-						//}
-					//}
-				//}
+			function sketch(p) {
+				var ed;
+				var data = tweetValues;
+				var y = [10, 50, 10, 20, 50, 250];
+
+				function plot(data) {
+					p.fill(255, 0, 0);	
+					p.noStroke();
+
+					var plot = p.beginShape();
+
+					for (var i = 0; i < data.length; i++) {
+						p.vertex(data[i].x, data[i].y);
+					}
+					p.vertex(data[data.length-1].x, 0); // add a point at the bottom right corner
+					p.vertex(0, 0); // add a point at the origin
+
+					p.endShape();
+				}
+
+				for(var prop in data){//prop is each tweetInterval
+					var state_obj = data[prop];//each state:value object
+					for(var state_prop in state_obj){//state_prop is each  state property in the state object
+						var state_value = state_obj[state_prop]//and this is the state property's values which are an arrays of 2 values(string and float)
+						for(var i=0; i<state_value.length-1; i++){
+							//var array_two_values = state_value[i]
+							if(state_value[i][i]=="#education"){
+								ed = state_value[i+1][i+1];//this is the float numeric value of the nested state array
+								console.log(ed);	
+
+							}
 						}
 					}
 				}
-			}
-			
-			
 
+
+			p.setup = setup;
+			p.draw = draw;
+		}
+			var p = new Processing(canvas, sketch); // actually attach and run the sketch
 		</script>
 
 	</body>
