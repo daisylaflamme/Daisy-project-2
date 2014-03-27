@@ -513,28 +513,37 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 		<script>
-			var canvas = document.getElementsByTagName('div')[0];
+			var canvas = document.getElementById('hashtag-plot');
 			var width = 1280;
 			var tweetIntervals = Object.keys(tweetValues);
 
 			function sketch(p) {
 				var ed;
-				var data = tweetValues;
-				var y = [10, 50, 10, 20, 50, 250];
+				var data = tweetValues;//this is the jason object with nested objects
+				var coordinates = []; //I will use this array to store x and y coordinates. 
+				var x = [100, 200, 300, 450, 750, 1250];
+				//var y = ed; //for now i will use ed for y. 
+				coordinates[0] = {'x': 100, 'y': ed*1000}; // use a dictionary for easy x, y access
 
-				function plot(data) {
+				function plot(coordinates) {
 					p.fill(255, 0, 0);	
 					p.noStroke();
 
 					var plot = p.beginShape();
 
-					for (var i = 0; i < data.length; i++) {
-						p.vertex(data[i].x, data[i].y);
+					for (var i = 0; i < coordinates.length; i++) {
+						p.vertex(coordinates[i].x, coordinates[i].y);
 					}
-					p.vertex(data[data.length-1].x, 0); // add a point at the bottom right corner
+					p.vertex(coordinates[coordinates.length-1].x, 0); // add a point at the bottom right corner
 					p.vertex(0, 0); // add a point at the origin
 
 					p.endShape();
+				}
+
+				function normalizeCoordinates() {
+					// flip Processing's weird coordinate system with (0, 0) in the top left
+					p.translate(0, p.height)
+					p.scale(1, -1);
 				}
 
 				for(var prop in data){//prop is each tweetInterval
@@ -552,6 +561,15 @@
 					}
 				}
 
+				function setup() {
+					p.size(width, p.max(y)*1.25); // scale our sketch to be a bit bigger than our tallest y
+				}
+
+				function draw () {
+					normalizeCoordinates();
+
+					plot(coordinates);
+				}
 
 			p.setup = setup;
 			p.draw = draw;
