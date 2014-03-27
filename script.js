@@ -2,6 +2,8 @@ var hashtagPlot = document.getElementById('hashtag-plot');
 var scrubBar = document.getElementById('scrub-bar');
 var SOTUvideo = document.getElementById('sotu-video');
 var videoOffset = 306;
+var animationFrame = webkitRequestAnimationFrame(slideScrubBar);
+
 
 // Pull out all the transcript timestamps for use throughout
 var transcript = document.getElementById('sotu-transcript');
@@ -36,11 +38,14 @@ var hashtagColors = {
 
 // Run hashtagMousemove every time the mouse moves above the hashtagPlot
 hashtagPlot.addEventListener('mousemove', hashtagMousemove, false);
+
 function hashtagMousemove(e) {
 	updateScrubBar(e);
 	updateVideo(e);
 	updateTranscript(e);
-	webkitCancelAnimationFrame(animationFrame);
+	if(animationFrame){
+		webkitCancelAnimationFrame(animationFrame);
+	}	
 }
 
 hashtagPlot.addEventListener('mouseout', playVideo, false);
@@ -101,7 +106,7 @@ function playVideo(e) {
 
 function slideScrubBar() {
 	// A function to make the scrubBar slide to right when video is playing
-	var animationFrame = webkitRequestAnimationFrame(slideScrubBar);
+	//var animationFrame = webkitRequestAnimationFrame(slideScrubBar);
 	var moveScrubBarRight =  hashtagPlot.offsetWidth * (SOTUvideo.currentTime/SOTUvideo.duration);
 	scrubBar.style.left = parseInt(moveScrubBarRight, 10);
 	//console.log(scrubBar.style.left);
