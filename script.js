@@ -1,4 +1,4 @@
-var hashtagPlot = document.getElementById('hashtag-plot');
+var hashtagPlot = document.getElementById('canvas');
 var scrubBar = document.getElementById('scrub-bar');
 var SOTUvideo = document.getElementById('sotu-video');
 var videoOffset = 306;
