@@ -3,6 +3,7 @@ var scrubBar = document.getElementById('scrub-bar');
 var SOTUvideo = document.getElementById('sotu-video');
 var videoOffset = 306;
 var animationFrame = webkitRequestAnimationFrame(slideScrubBar);
+var tweetIntervals = Object.keys(tweetValues);
 
 
 // Pull out all the transcript timestamps for use throughout
