@@ -517,18 +517,13 @@
 			var width = 1280;
 			//var tweetIntervals = Object.keys(tweetValues);
 			var ed =[]; //previously ed
-			var xSpacing = 100; // = width/(ed.length-1);
+			var xSpacing = 20; // = width/(ed.length-1);
 
 			function sketch(p) {
 				
 				var data = tweetValues;//this is the jason object with nested objects
 				var coordinates = []; //I will use this array to store x and y coordinates. 
-				
-				
-
-
-
-				
+								
 
 				function plot(coordinates) {
 					p.fill(255, 0, 0);	
@@ -551,17 +546,11 @@
 					p.scale(1, -1);
 				}
 
-				
-
-					
-				
-
 				function setup() {
-					p.size(width); // scale our sketch to be 1280px
-				}
+					p.size(1280, 300);
+					// p.size(width); // scale our sketch to be 1280px
 
-				function draw () {
-					normalizeCoordinates();
+										normalizeCoordinates();
 					//plot(coordinates);
 					//accesing values in from the values.json
 					for(var prop in data){//prop is each tweetInterval
@@ -571,8 +560,10 @@
 							for(var i=0; i<state_value.length-1; i++){
 								//var array_two_values = state_value[i]
 								if(state_value[i][i]=="#education"){
-									ed[i] = parseInt((state_value[i+1][i+1])*10000, 10);//this is the float numeric value of the nested state array
-									xSpacing = xSpacing + width/63;
+									ed[i] = p.map(parseInt((state_value[i+1][i+1])*10000, 10), 0, 180, 0, p.height);
+									//ed[i] = parseInt((state_value[i+1][i+1])*10000, 10);//this is the float numeric value of the nested state array
+									xSpacing = xSpacing + 3;
+									//console.log(xSpacing);
 									for (var j = 0; j < state_prop.length; j++) {
 										coordinates[j] = {'x': xSpacing , 'y': ed[i]}; // use a dictionary for easy x, y access
 										console.log(xSpacing + "," + ed[i]);	
@@ -582,6 +573,9 @@
 							}
 						}
 					}
+				}
+
+				function draw () {
 				}
 
 			p.setup = setup;
