@@ -318,6 +318,7 @@ function UTCtoNearestAvailableIntervalData(UTCdate) {
 	for (var i = 0; i < tweetIntervals.length; i++) {
 		// Tweets are indexed by interval (e.g. 2014-01-29 02:15:::2014-01-29 02:15), and we just want the start of the interval
 		var tweetIntervalStart = new Date(tweetIntervals[i].split(':::')[0]);
+		//console.log(tweetIntervalStart);
 		// As we go through, check if the time we just converted is after the time we're looking fo
 		if (UTCdate < tweetIntervalStart) {
 			return tweetValues[tweetIntervals[i-1]];
@@ -360,6 +361,7 @@ function engagementRange(interval, hashtag) {
 		for ( var i = 0; i < stateData.length; i++ ) {
 			if ('#' + hashtag == stateData[i][0]) {
 				var frequency = stateData[i][1];
+				console.log(stateData[0][0]);
 				range[0] = Math.min(range[0], frequency);
 				range[1] = Math.max(range[1], frequency);
 			}

@@ -1,12 +1,12 @@
-var tweetValues = {
-  "2014-01-29 02:15:::2014-01-29 02:15": {
-    "IL": [
-      [
-        "#education",
-        0.004066780821917808
+var tweetValues = {                        //data
+  "2014-01-29 02:15:::2014-01-29 02:15": { //prop is each tweetInterval
+    "IL": [                                //state_obj = data[prop]        
+      [                                    //this kind of array is state_value[0]
+        "#education",                      //state_value[0][0]
+        0.004066780821917808               //state_value[0][1] 
       ],
       [
-        "#energy",
+        "#energy",                        //state_value[1]
         0.0010702054794520547
       ],
       [
