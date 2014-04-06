@@ -549,7 +549,7 @@
 					//accesing values in from the values.json
 					var ed =[]; //previously ed. ed is an array of y coordinates
 					var xSpacing = 0; // = width/(ed.length-1);
-
+					p.beginShape();
 					for(var prop in data){//prop is each tweetInterval
 						var state_obj = data[prop];//each state:value object
 
@@ -576,7 +576,13 @@
 							}//end for i
 						}//end for state_prop
 					}//end for prop
+					p.endShape();
 				}//end xyColorMap
+
+				function scrubRect(){
+					p.fill(255, 255, 255);
+					rect(30, 20, 55, 55);
+				}
 
 				function setup() {
 					p.size(1280, 300);
@@ -586,12 +592,13 @@
 					xyColorMap ("#healthcare", .6, 100, 80, 0);
 					xyColorMap ("#fairness", .6, 10, 67, 200);
 					xyColorMap ("#education", .6, 25, 0, 0);
-					xyColorMap ("#energy", .6, 0, 0, 255);
-								
+					xyColorMap ("#energy", .6, 0, 0, 255);								
 					xyColorMap ("#immigration", .6, 255, 0, 255);
 					xyColorMap ("#defense", .6, 180, 0, 200);
 					xyColorMap ("#jobs", .6, 255, 0, 0);		
-					
+					//initialize the scrub bar
+					scrubRect();
+
 				}//end setup()
 
 				function draw () {
