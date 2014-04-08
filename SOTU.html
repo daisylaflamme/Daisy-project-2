@@ -580,8 +580,10 @@
 				}//end xyColorMap
 
 				function scrubRect(){
-					p.fill(255, 255, 255);
-					rect(30, 20, 55, 55);
+					p.beginShape();
+					p.fill(0, 0, 0);
+					p.rect(0, 0, 10, p.height);
+					p.endShape();
 				}
 
 				function setup() {
@@ -602,6 +604,7 @@
 				}//end setup()
 
 				function draw () {
+					scrubRect();	
 				}
 
 			p.setup = setup;
