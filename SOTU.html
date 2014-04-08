@@ -579,11 +579,11 @@
 					p.endShape();
 				}//end xyColorMap
 
-				function scrubRect(){
-					p.beginShape();
+				function scrubRect(newX){
+					//p.beginShape();
 					p.fill(0, 0, 0);
-					p.rect(0, 0, 10, p.height);
-					p.endShape();
+					p.rect(newX, 0, 10, p.height);
+					//p.endShape();
 				}
 
 				function setup() {
@@ -599,13 +599,13 @@
 					xyColorMap ("#defense", .6, 180, 0, 200);
 					xyColorMap ("#jobs", .6, 255, 0, 0);		
 					//initialize the scrub bar
-					scrubRect();
+					scrubRect(0);
 
 				}//end setup()
 
-				function draw () {
-					scrubRect();	
-				}
+				function draw () {	
+					scrubRect(p.mouseX);
+				}// end draw
 
 			p.setup = setup;
 			p.draw = draw;
