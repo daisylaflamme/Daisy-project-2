@@ -525,7 +525,7 @@
 
 				function plot(coordinates, color1, color2, color3) {
 					//var c1 = parseInt(p.random(255), 10);
-					p.fill(color1, color2, color3);	
+					p.fill(color1, color2, color3, 100);	
 					p.noStroke();
 
 					var plot = p.beginShape();
@@ -581,7 +581,7 @@
 
 				function scrubRect(newX){
 					//p.beginShape();
-					p.fill(0, 0, 0);
+					p.fill(0, 255, 0);
 					p.rect(newX, 0, 10, p.height);
 					//p.endShape();
 				}
@@ -589,22 +589,24 @@
 				function setup() {
 					p.size(1280, 300);
 					// p.size(width); // scale our sketch to be 1280px
-					normalizeCoordinates();
-					//plot(coordinates);
-					xyColorMap ("#healthcare", .6, 100, 80, 0);
-					xyColorMap ("#fairness", .6, 10, 67, 200);
-					xyColorMap ("#education", .6, 25, 0, 0);
-					xyColorMap ("#energy", .6, 0, 0, 255);								
-					xyColorMap ("#immigration", .6, 255, 0, 255);
-					xyColorMap ("#defense", .6, 180, 0, 200);
-					xyColorMap ("#jobs", .6, 255, 0, 0);		
-					//initialize the scrub bar
-					scrubRect(0);
+					
 
 				}//end setup()
 
 				function draw () {	
 					//scrubRect(0);
+					// normalizeCoordinates();
+					// //plot(coordinates);
+					// xyColorMap ("#healthcare", .6, 100, 80, 0);
+					// xyColorMap ("#fairness", .6, 10, 67, 200);
+					// xyColorMap ("#education", .6, 25, 0, 0);
+					// xyColorMap ("#energy", .6, 0, 0, 255);								
+					// xyColorMap ("#immigration", .6, 255, 0, 255);
+					// xyColorMap ("#defense", .6, 180, 0, 200);
+					// xyColorMap ("#jobs", .6, 255, 0, 0);		
+					// //initialize the scrub bar
+					// scrubRect(0);
+					p.background(0);
 					scrubRect(p.mouseX);
 					//p.pmouseX == 0;
 
